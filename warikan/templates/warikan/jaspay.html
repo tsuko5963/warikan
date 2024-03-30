@@ -1,0 +1,52 @@
+{% extends 'warikan/base2.html' %}
+{% block content %}
+<div id="main"> 
+<div id="img-qr"></div>
+<div class="multi-way-choice">
+   <input type="radio" id="radio-1" name="switch-1" value="0" checked/>
+   <label for="radio-1">自分側</label>
+   <input type="radio" id="radio-2" name="switch-1" value="1" />
+   <label for="radio-2">相手側</label>
+</div>
+<script>
+$(function(){
+    var flag = 1;
+    var qrtext = "https://jaspay.jp/send?to=" + {{ jaspay }} + "&amount=" + {{ amountMyside }};
+    var utf8qrtext = unescape(encodeURIComponent(qrtext));
+    $("#img-qr").html("");
+    $("#img-qr").qrcode({text:utf8qrtext}); 
+    $("#radio-1").change(function() {
+        if( flag == 1) {
+            var qrtext = "https://jaspay.jp/send?to=" + {{ jaspay }} + "&amount=" + {{ amountOtherside }};
+            var utf8qrtext = unescape(encodeURIComponent(qrtext));
+            $("#img-qr").html("");
+            $("#img-qr").qrcode({text:utf8qrtext});
+            flag = 0;
+        } else {
+            var qrtext = "https://jaspay.jp/send?to=" + {{ jaspay }} + "&amount=" + {{ amountMyside }};
+            var utf8qrtext = unescape(encodeURIComponent(qrtext));
+            $("#img-qr").html("");
+            $("#img-qr").qrcode({text:utf8qrtext});
+            flag = 1;
+        }
+    });
+    $("#radio-2").change(function() {
+        if( flag == 1) {
+            var qrtext = "https://jaspay.jp/send?to=" + {{ jaspay }} + "&amount=" + {{ amountOtherside }};
+            var utf8qrtext = unescape(encodeURIComponent(qrtext));
+            $("#img-qr").html("");
+            $("#img-qr").qrcode({text:utf8qrtext});
+            flag = 0;
+        } else {
+            var qrtext = "https://jaspay.jp/send?to=" + {{ jaspay }} + "&amount=" + {{ amountMyside }};
+            var utf8qrtext = unescape(encodeURIComponent(qrtext));
+            $("#img-qr").html("");
+            $("#img-qr").qrcode({text:utf8qrtext});
+            flag = 1;
+        }
+    });
+
+});
+</script>
+</div>
+{% endblock %}

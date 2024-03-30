@@ -1,0 +1,12 @@
+{% extends 'warikan/base2.html' %}
+{% block content %}
+<p>登録が完了しました</p>
+<script>
+window.onload = function () {
+    window.setTimeout(jump, 1000);
+};
+function jump() {
+    window.location.href = "{% url 'input' %}";
+}
+</script>
+{% endblock %}

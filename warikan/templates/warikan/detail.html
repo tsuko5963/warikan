@@ -1,0 +1,93 @@
+{% extends 'warikan/base2.html' %}
+{% load humanize %}
+{% block content %}
+<div id="main">
+<div class="split-box">
+<div class="left-box">
+{% if list  %}
+<form method="POST" name="form1" action="{% url 'detail' %}">{% csrf_token %}
+<table class="center">
+<tr><th class="td4">日付</th><th class="td4">時刻</th></tr>
+{% for row in list %}
+<tr class="click" id={{ forloop.counter0 }}>
+<td class="td4">{{ row.date|date:"Y/n/j" }}</td>
+<td class="td4">{{ row.time }}</td>
+</tr>
+{% endfor %}
+</table>
+<input type="hidden" id="row" name ="row" value="0" >
+</form>
+{% else %}
+<p>データがありません</P>
+{% endif %}
+</div>
+<div class="right-box">
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<table>
+<tr>
+<td>
+自分側の人数：{{ numMyside }}人
+</td>
+<tr>
+<td>
+相手側の人数：{{ numOtherside }}人
+</td>
+</tr>
+<tr>
+<td>
+金額：{{ amount | intcomma }}円
+</td>
+</tr>
+<tr>
+<td>
+支払いの割合：
+</td>
+</tr>
+<tr>
+<td>
+　自分側　{{ ratio }}：{{ ratio2 }}　相手側
+</td>
+</tr>
+<tr>
+<td>
+自分側：{{ amountMyside | intcomma }}円/人
+</td>
+</tr>
+<tr>
+<td>
+相手側：{{ amountOtherside | intcomma }}円/人
+</td>
+</tr>
+<tr>
+<td>
+お釣り：{{ charge | intcomma }}円
+</td>
+</tr>
+<tr>
+<td>
+備考：<br>
+<textarea id="remarks">
+{{ remarks }}
+</textarea>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<script>
+$(function() {
+    $(".click").on("click", function() {
+        $("#row").val($(this).attr('id'));
+        form1.submit();
+    });
+});
+</script>
+{% endblock %}

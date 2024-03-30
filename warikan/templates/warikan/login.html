@@ -1,0 +1,23 @@
+{% extends 'warikan/base.html' %}
+{% block content %}
+<div id="main">
+<form method="post" name="form1" action="{% url 'login' %}">
+    {% csrf_token %}
+    <table class="reg_form">
+    <tr>
+    <td class="td1"><label for="userid">ユーザーID:</label></td>
+    <td class="td1"><input class="td1" type="text" name="userid" placeholder="ユーザIDを入力"></td>
+    </tr>
+    <tr>
+    <td class="td1"><label for="password">パスワード：</label></td>
+    <td class="td1"><input class="td1" type="password" name="password" placeholder="パスワードを入力"></td>
+    </tr>
+    </table>
+    <p>
+    <input type="checkbox" name="account_record" value="check" id="cb1">アカウント情報を記録する
+    </p>
+    <a href="javascript:form1.submit()" class="btn_01">ログイン</a>
+</form>
+<a href="admin/" class="new">新規登録</a>
+</div>
+{% endblock %}

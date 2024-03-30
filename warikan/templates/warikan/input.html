@@ -1,0 +1,98 @@
+{% extends 'warikan/base.html' %}
+{% block content %}
+<div id="main">
+    <form method="POST" name="form1" action="{% url 'input' %}">{% csrf_token %}
+        <table class="reg_form">
+            <tr>
+                <td class="td2"><label for="userid">自分側の人数:</label></td>
+                <td class="td1"><input class="in1" type="number" name="numMyside" min="1" max="99" step="1" placeholder="1〜99を入力" value="{{ numMyside }}"></td>
+            </tr>
+            <tr>
+                <td class="td2"><label for="userid">相手側の人数:</label></td>
+                <td class="td1"><input class="in1" type="number" name="numOtherside" min="1" max="99" step="1" placeholder="1〜99を入力" value="{{ numOtherside }}"></td>
+            </tr>
+            <tr>
+                <td class="td2"><label for="userid">金額:</label></td>
+                <td class="td1"><input class="in1" type="number" name="amount" min="1" max="999999" step="1" placeholder="1〜999999を入力" value="{{ amount }}"></td>
+            </tr>
+            <tr>
+                <td class="td3" colspan="2">
+                    支払割合
+                </td>
+            </tr>
+            <tr>
+                <td class="td3" colspan="2">
+                自分側<input type="range" id="slider" class="input-range" name="ratio" min="0" max="100" step="10" value="{{ ratio }}">相手側
+                </td>
+            </tr>
+            <tr>
+                <td class="td3" colspan="2">
+                    自分側の支払割合：<span id="result">{{ ratio }}</span>
+                </td>
+            </tr>
+        </table>
+        <a href="javascript:form1.submit()" id="calc" class="btn_01">計算する</a>
+    </form>
+    <table class="center">
+{% if Calculated %}
+    <tr>
+        <td class="td1">
+            自分側：
+        </td>
+        <td class="td1">
+            {{ amountMyside }}円/人
+        </td>
+    </tr>
+    <tr>
+        <td class="td1">
+            相手側：
+        </td>
+        <td class="td1">
+            {{ amountOtherside }}円/人
+        </td>
+    </tr>
+    <tr>
+        <td class="td1">
+            お釣り：
+        </td>
+        <td class="td1">
+            {{ charge }}円
+        </td>
+    </tr>
+    <tr>
+    <td class="center" colspan="2">
+    <a href="javascript:clickB3()" class="btn_01">ジャスPay</a>
+    </td>
+    </tr>
+{% endif %}
+    <tr>
+    <td class="center">
+{% if Calculated %}
+    <a href="javascript:clickB1()" class="btn_02">結果を登録する</a>
+{% else %}
+    <a href="" class="btn_02">結果を登録する</a>
+{% endif %}
+    </td>
+    <td class="center">
+    <a href="javascript:clickB2()" class="btn_02">履歴を表示する</a>
+    </td>
+    </tr>
+    </table>
+<script>
+$(function() {
+    $('#slider').change(function() {
+        $('#result').text($(this).val());
+    });
+});
+function clickB1() {
+    window.location.href = "{% url 'confirm' %}";
+}
+function clickB2() {
+    window.location.href = "{% url 'detail' %}";
+}
+function clickB3() {
+    window.location.href = "{% url 'jaspay' %}";
+}
+</script>
+</div>
+{% endblock %}

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="109.92501"
+   height="31.925003"
+   viewBox="0 0 29.084327 8.4468236"
+   version="1.1"
+   id="svg5"
+   sodipodi:docname="b1.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview40"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="2.6628997"
+     inkscape:cx="64.027947"
+     inkscape:cy="21.780768"
+     inkscape:window-width="1920"
+     inkscape:window-height="1019"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg5" />
+  <defs
+     id="defs2">
+    <rect
+       x="22.065641"
+       y="20.194782"
+       width="354.05682"
+       height="104.15465"
+       id="rect1709" />
+  </defs>
+  <rect
+     style="fill:#0099ff;fill-opacity:1;stroke:none;stroke-width:0.0198426"
+     id="rect373"
+     width="29.084326"
+     height="8.4468241"
+     x="1.8364224e-07"
+     y="2.7743792e-09"
+     ry="0.68323845" />
+  <text
+     xml:space="preserve"
+     transform="matrix(0.07749382,0,0,0.07749382,-0.81482593,-1.5514283)"
+     id="text1707"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:85.3333px;font-family:'IPA Pゴシック';-inkscape-font-specification:'IPA Pゴシック';white-space:pre;shape-inside:url(#rect1709);shape-padding:0;display:inline;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.3"><tspan
+       x="22.066406"
+       y="105.94528"
+       id="tspan408">日付選択</tspan></text>
+</svg>
