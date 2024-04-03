@@ -174,18 +174,19 @@ def Detail(request):
         params['list'] = records 
         return render(request, template, context=params)
     else:
-        params['date'] = records[0]['date']
-        params['time'] = records[0]['time']
-        params['numMyside'] = records[0]['numMyside']
-        params['numOtherside'] = records[0]['numOtherside']
-        params['amount'] = records[0]['amount']
-        params['ratio'] = records[0]['ratio']
-        params['ratio2'] = 100 - records[0]['ratio']
-        params['amountMyside'] = records[0]['amountMyside']
-        params['amountOtherside'] = records[0]['amountOtherside']
-        params['charge'] = records[0]['charge']
-        params['remarks'] = records[0]['remarks']
-        params['list'] = records 
+        if records.count() > 0:
+            params['date'] = records[0]['date']
+            params['time'] = records[0]['time']
+            params['numMyside'] = records[0]['numMyside']
+            params['numOtherside'] = records[0]['numOtherside']
+            params['amount'] = records[0]['amount']
+            params['ratio'] = records[0]['ratio']
+            params['ratio2'] = 100 - records[0]['ratio']
+            params['amountMyside'] = records[0]['amountMyside']
+            params['amountOtherside'] = records[0]['amountOtherside']
+            params['charge'] = records[0]['charge']
+            params['remarks'] = records[0]['remarks']
+            params['list'] = records 
         return render(request, template, context=params)
 
 @login_required
