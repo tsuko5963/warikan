@@ -14,7 +14,7 @@
 	<div class="page-header">
         <a href="{% url 'input' %}">←</a>　Warikan
 {% if user.is_authenticated %}
-　　　　　　　　　　　　　　　<a href="{% url 'logout' %}">LOGOUT</a>
+　　　　　　　　　　　　　<a href="{% url 'logout' %}">LOGOUT</a>
 {% endif %}
 	</div>
 		{% block content %}
