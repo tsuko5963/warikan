@@ -127,6 +127,7 @@ def Register(request):
     template = "warikan/register.html"
     params = {}
     username = str(request.user)
+    user_id = request.user.id
     if request.method == 'POST':
         date = request.POST.get('date')
         time = request.POST.get('time')
@@ -142,10 +143,10 @@ def Register(request):
         numMyside = numMyside, numOtherside = numOtherside,
         amount = amount, ratio = ratio, amountMyside = amountMyside,
         amountOtherside = amountOtherside, charge = charge,
-        username = username,)
+        username = username, user_id = user_id,)
         record.save()
-        if HistoryModel.objects.filter(username = username).count() >= 51:
-            HistoryModel.objects.filter(username = username)\
+        if HistoryModel.objects.filter(user_id = user_id).count() >= 51:
+            HistoryModel.objects.filter(user_id = user_id)\
             .order_by('date', '-time')[:1].delete()
         return render(request, template, context=params)
     else:
@@ -156,7 +157,8 @@ def Detail(request):
     template = "warikan/detail.html"
     params = {}
     username = str(request.user)
-    records = HistoryModel.objects.filter(username = username)\
+    user_id = request.user.id
+    records = HistoryModel.objects.filter(user_id = user_id)\
     .order_by('-date', 'time')[:50].values()
     if request.method == 'POST':
         row = int(request.POST.get('row'))

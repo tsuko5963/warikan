@@ -26,6 +26,7 @@ class HistoryModel(models.Model):
     charge = models.IntegerField(default = 0)
     remarks = models.TextField(default = "", max_length = 400)
     username = models.CharField(default = "", max_length = 15)
+    user_id = models.IntegerField(default = 0)
 
     def __str__(self):
         return self.date.strftime('%Y-%m-%d') + ' ' + self.time
