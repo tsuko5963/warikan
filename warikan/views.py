@@ -52,10 +52,14 @@ def Input(request):
             ratio = int(request.POST.get('ratio'))
             amountMyside = int(math.ceil(amount * ratio / 10000
             / numMyside_f) * 100)
-            amountOtherside = int(math.ceil(amount * (100 - ratio) / 10000
+            amountOtherside = int(round(amount * (100 - ratio) / 10000
             / numOtherside_f) * 100)
             charge = amountMyside * numMyside + amountOtherside\
-            * numOtherside - amount 
+                    * numOtherside - amount
+            if numMyside < 1 or numMyside > 100\
+                    or numOtherside < 1 or numOtherside > 100\
+                    or amount < 1 or amount > 999999:
+                raise Exception("Input Error")
         except:
             params['Calculated'] = False
             params['ratio'] = 50 
