@@ -56,6 +56,10 @@ def Input(request):
             / numOtherside_f) * 100)
             charge = amountMyside * numMyside + amountOtherside\
             * numOtherside - amount 
+            if numMyside < 1 or numMyside > 99\
+                    or numOtherside < 1 or numOtherside > 99\
+                    or amount < 1 or amount > 999999:
+                raise Exception("Input Error")
         except:
             params['Calculated'] = False
             params['ratio'] = 50 
