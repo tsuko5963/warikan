@@ -150,8 +150,9 @@ def Register(request):
         username = username, user_id = user_id,)
         record.save()
         if HistoryModel.objects.filter(user_id = user_id).count() >= 51:
-            HistoryModel.objects.filter(user_id = user_id)\
-            .order_by('date', '-time')[:1].delete()
+            record = HistoryModel.objects.filter(user_id = user_id)\
+            .order_by('date', '-time')[:1].values()
+            HistoryModel.objects.filter(id = record[0]['id']).delete()
         return render(request, template, context=params)
     else:
         return render(request, template, context=params)
